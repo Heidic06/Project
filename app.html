@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Name Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            color: #243447;
+        }
+
+        .wrap {
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 24px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #1f3a5f;
+        }
+
+        .row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 18px 0;
+        }
+
+        input, button {
+            font-size: 16px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid #c8d4e3;
+        }
+
+        input {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        button {
+            background: #1f7a8c;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #175c69;
+        }
+
+        #result {
+            margin-top: 18px;
+            padding: 18px;
+            background: #eef6fb;
+            border-left: 5px solid #1f7a8c;
+            min-height: 28px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        a {
+            color: #1f7a8c;
+            text-decoration: none;
+        }
+
+        .toplink {
+            display: inline-block;
+            margin-bottom: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <a class="toplink" href="index.html">← Back to Scratch Page</a>
+        <div class="card">
+            <h1>Name Generator</h1>
+            <p>Type any word, then generate a fun random name.</p>
+
+            <div class="row">
+                <input id="theme" type="text" placeholder="Enter a word or theme" />
+                <button onclick="generateName()">Generate Name</button>
+            </div>
+
+            <div id="result">Your name will appear here.</div>
+        </div>
+    </div>
+
+    <script>
+        const firstParts = ["Sky", "River", "Echo", "Nova", "Milo", "Luna", "Apex", "Blue", "Dune", "Atlas"];
+        const lastParts = ["Stone", "Fox", "Lane", "Wren", "Vale", "Hart", "Quest", "Bloom", "Frost", "Moss"];
+
+        function generateName() {
+            const theme = document.getElementById("theme").value.trim();
+            const first = firstParts[Math.floor(Math.random() * firstParts.length)];
+            const last = lastParts[Math.floor(Math.random() * lastParts.length)];
+            const name = theme
+                ? `${theme[0].toUpperCase() + theme.slice(1)} ${first} ${last}`
+                : `${first} ${last}`;
+            document.getElementById("result").textContent = name;
+        }
+    </script>
+</body>
+</html>
